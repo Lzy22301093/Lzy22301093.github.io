@@ -1,368 +1,564 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CareerAssistant 公开在线演示：以个人画像为事实源的 AI 求职资产工作台。本页面仅使用虚构演示数据。" />
-  <meta name="theme-color" content="#f7f8f4" />
-  <title>CareerAssistant · AI 求职资产工作台</title>
-  <link rel="icon" href="data:," />
-  <link rel="stylesheet" href="./styles.css" />
-  <script src="./assets/lucide.min.js" defer></script>
-  <script src="./app.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CareerAssistant AI 求职助手在线功能预览：个人画像、简历生成、简历工作台、求职分析、模拟面试与投递记录。">
+  <meta name="theme-color" content="#f6f2ea">
+  <link rel="icon" href="./assets/agent-workflow.png">
+  <title>CareerAssistant｜AI 求职助手在线功能预览</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">跳到主要内容</a>
-  <header class="topbar" id="top">
-    <div class="topbar__inner">
+  <a class="skip-link" href="#product-preview">跳到功能预览</a>
+
+  <header class="site-header" id="top">
+    <div class="nav-wrap">
       <a class="brand" href="#top" aria-label="CareerAssistant 首页">
-        <span class="brand__mark" aria-hidden="true"><i data-lucide="scan-search"></i></span>
-        <span class="brand__name">CareerAssistant</span>
-        <span class="brand__badge">在线演示</span>
+        <span class="brand-mark"><i data-lucide="file-user"></i></span>
+        <span>CareerAssistant</span>
       </a>
-      <nav class="nav" aria-label="主导航">
-        <a href="#product">产品闭环</a><a href="#demo">功能体验</a><a href="#workflow">智能协作</a><a href="#privacy">演示说明</a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="#introduction">项目介绍</a>
+        <a href="#product-preview">功能预览</a>
+        <a href="#workflow">产品闭环</a>
+        <a href="#architecture">技术架构</a>
       </nav>
-      <div class="topbar__actions">
-        <button class="button button--quiet demo-info-button" type="button"><i data-lucide="shield-check"></i><span>数据说明</span></button>
-        <a class="button button--primary" href="#demo"><span>开始体验</span><i data-lucide="arrow-down-right"></i></a>
-        <button class="icon-button menu-button" type="button" aria-label="打开导航菜单" aria-expanded="false"><i data-lucide="menu"></i></button>
-      </div>
+      <a class="nav-cta" href="https://github.com/Lzy22301093/CareerAssistant" target="_blank" rel="noreferrer">
+        <i data-lucide="github"></i><span>查看完整项目</span>
+      </a>
     </div>
   </header>
 
-  <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__copy">
-        <div class="eyebrow"><span class="eyebrow__dot"></span>从一次性改简历，到可持续复用的求职资产</div>
-        <h1 id="hero-title">CareerAssistant</h1>
-        <p class="hero__lead">把简历、JD、项目经历与面试复盘整理成可追溯的个人画像，再由多个 AI 协作完成岗位匹配、简历定制、模拟面试与求职信生成。</p>
-        <div class="hero__actions">
-          <a class="button button--primary button--large" href="#demo"><i data-lucide="play"></i><span>进入交互演示</span></a>
-          <a class="button button--secondary button--large" href="#workflow"><i data-lucide="workflow"></i><span>查看协作流程</span></a>
-        </div>
-        <div class="hero__trust">
-          <div class="trust-item"><i data-lucide="database-zap"></i><div><strong>画像先于生成</strong><span>事实与证据统一沉淀</span></div></div>
-          <div class="trust-item"><i data-lucide="user-check"></i><div><strong>用户拥有写入权</strong><span>AI 提案，用户确认</span></div></div>
-          <div class="trust-item"><i data-lucide="refresh-cw"></i><div><strong>一次输入多处复用</strong><span>简历、匹配、面试同步使用</span></div></div>
-        </div>
-      </div>
-
-      <div class="hero__visual" aria-label="CareerAssistant 工作台界面示意">
-        <div class="app-window">
-          <div class="app-window__top">
-            <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
-            <div class="window-title"><i data-lucide="layout-dashboard"></i>求职资产工作台</div>
-            <div class="window-status"><span></span>演示模式</div>
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="live-dot"></span>在线功能预览 · 数据均为虚构演示</div>
+          <h1>把一次求职输入，<br>沉淀为可复用的<em>求职资产</em></h1>
+          <p class="hero-lead">
+            CareerAssistant 是一套以个人画像为核心的 AI 求职工作台。录入一次 JD 与简历，
+            即可沿“个人画像 → 简历生成 → 简历工作台 → 求职分析 → 模拟面试 → 投递记录”完成可控闭环。
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#product-preview"><i data-lucide="layout-dashboard"></i>进入功能预览</a>
+            <a class="button button-secondary" href="https://github.com/Lzy22301093/CareerAssistant" target="_blank" rel="noreferrer"><i data-lucide="terminal-square"></i>获取完整体验</a>
           </div>
-          <div class="app-window__body">
-            <aside class="mini-sidebar">
-              <div class="mini-profile"><div class="avatar avatar--initials">林</div><div><strong>林知远</strong><span>AI 应用工程师</span></div></div>
-              <div class="mini-nav">
-                <span class="is-active"><i data-lucide="contact"></i>个人画像</span><span><i data-lucide="file-text"></i>简历版本</span>
-                <span><i data-lucide="target"></i>岗位匹配</span><span><i data-lucide="mic-2"></i>模拟面试</span>
-              </div>
-              <div class="profile-progress">
-                <div class="profile-progress__label"><span>画像完整度</span><strong>92%</strong></div>
-                <div class="progress-track"><span style="width: 92%"></span></div>
-              </div>
+          <div class="hero-note">
+            <i data-lucide="shield-check"></i>
+            <span>本页不连接真实后端，不采集访客输入；人物、学校、公司、项目与联系方式全部虚构。</span>
+          </div>
+        </div>
+
+        <div class="hero-product" aria-label="CareerAssistant 工作台预览">
+          <div class="window-bar">
+            <div class="window-brand"><span class="mini-mark"><i data-lucide="file-user"></i></span>CareerAssistant</div>
+            <div class="window-route">公开演示 / 工作台</div>
+            <div class="window-actions"><i data-lucide="bell"></i><span class="avatar-demo">林</span></div>
+          </div>
+          <div class="hero-dashboard">
+            <aside class="hero-sidebar">
+              <div class="side-label">工作区</div>
+              <div class="side-item active"><i data-lucide="library"></i><span>首页</span></div>
+              <div class="side-item"><i data-lucide="user-round"></i><span>个人画像</span></div>
+              <div class="side-item"><i data-lucide="sparkles"></i><span>简历生成</span></div>
+              <div class="side-item"><i data-lucide="files"></i><span>简历工作台</span></div>
+              <div class="side-item"><i data-lucide="scan-search"></i><span>求职分析</span></div>
+              <div class="side-item"><i data-lucide="messages-square"></i><span>模拟面试</span></div>
+              <div class="side-item"><i data-lucide="send"></i><span>投递记录</span></div>
             </aside>
-            <div class="mini-main">
-              <div class="mini-heading">
-                <div><span class="section-kicker">今日工作台</span><h2>下午好，继续完善你的求职资产</h2></div>
-                <button class="mini-primary"><i data-lucide="sparkles"></i>生成新资产</button>
+            <div class="hero-main">
+              <div class="hero-main-head">
+                <div><span class="small-kicker">今日工作台</span><h2>下午好，林知远</h2></div>
+                <span class="demo-pill">演示数据</span>
               </div>
-              <div class="mini-grid">
-                <article class="mini-card mini-card--profile">
-                  <div class="mini-card__head"><div class="icon-tile icon-tile--green"><i data-lucide="fingerprint"></i></div><span class="tag tag--green">已确认</span></div>
-                  <h3>个人画像</h3><p>24 条事实 · 31 条证据 · 3 个投递方向</p>
-                  <div class="mini-bars"><span style="width: 92%"></span><span style="width: 86%"></span><span style="width: 96%"></span></div>
-                </article>
-                <article class="mini-card">
-                  <div class="mini-card__head"><div class="icon-tile icon-tile--blue"><i data-lucide="file-check-2"></i></div><span class="tag tag--blue">版本 v3</span></div>
-                  <h3>AI 应用工程师简历</h3><p>基于画像生成 · 岗位匹配 86%</p>
-                  <div class="mini-score"><strong>86</strong><span>匹配度</span></div>
-                </article>
-                <article class="mini-card">
-                  <div class="mini-card__head"><div class="icon-tile icon-tile--coral"><i data-lucide="messages-square"></i></div><span class="tag tag--coral">待复盘</span></div>
-                  <h3>模拟面试报告</h3><p>完成 3 轮追问 · 生成 2 条画像提案</p>
-                  <div class="mini-people"><span>结</span><span>论</span><span>证</span><span>据</span></div>
-                </article>
+              <div class="mini-journey">
+                <div class="journey-state done"><b>01</b><span>画像已建立</span></div>
+                <i data-lucide="chevron-right"></i>
+                <div class="journey-state done"><b>02</b><span>简历 v3</span></div>
+                <i data-lucide="chevron-right"></i>
+                <div class="journey-state current"><b>03</b><span>对岗优化</span></div>
+                <i data-lucide="chevron-right"></i>
+                <div class="journey-state"><b>04</b><span>面试演练</span></div>
               </div>
-              <div class="activity-list">
-                <div class="activity-list__title"><h3>最近动态</h3><span>全部记录</span></div>
-                <div class="activity-row"><div class="activity-icon"><i data-lucide="check"></i></div><div><strong>确认画像提案：RAG 检索优化经验</strong><span>来源：项目复盘文档 · 10 分钟前</span></div><span class="activity-state">已同步到简历</span></div>
-                <div class="activity-row"><div class="activity-icon activity-icon--yellow"><i data-lucide="git-compare-arrows"></i></div><div><strong>简历 v3 已完成岗位定向优化</strong><span>保留模板与渲染配置 · 35 分钟前</span></div><span class="activity-state activity-state--yellow">待查看</span></div>
+              <div class="hero-grid">
+                <div class="hero-card hero-card-wide">
+                  <div class="card-title-row"><span>当前目标</span><span class="status success">进行中</span></div>
+                  <strong>后端开发工程师 · 校园招聘</strong>
+                  <p>星河云科技 · 杭州 · 18–24K</p>
+                  <div class="progress-line"><span style="width: 72%"></span></div>
+                  <div class="progress-meta"><span>岗位匹配度</span><b>72%</b></div>
+                </div>
+                <div class="hero-card metric-card"><span>已确认画像</span><strong>26</strong><small>条事实可追溯</small></div>
+                <div class="hero-card metric-card"><span>简历版本</span><strong>3</strong><small>支持对比与回滚</small></div>
+                <div class="hero-card activity-card">
+                  <div class="card-title-row"><span>最近活动</span><i data-lucide="clock-3"></i></div>
+                  <ul>
+                    <li><span class="activity-icon"><i data-lucide="check"></i></span><div><b>确认 2 条画像提案</b><small>10 分钟前</small></div></li>
+                    <li><span class="activity-icon"><i data-lucide="file-pen-line"></i></span><div><b>生成岗位定制稿</b><small>32 分钟前</small></div></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="floating-note floating-note--top"><i data-lucide="quote"></i><div><strong>证据可溯源</strong><span>每条画像都能回到原始材料</span></div></div>
-        <div class="floating-note floating-note--bottom"><i data-lucide="circle-check-big"></i><div><strong>提案已确认</strong><span>写入前始终由你决定</span></div></div>
+      </div>
+
+      <div class="module-rail" aria-label="真实产品主线">
+        <div class="rail-caption">真实产品主线</div>
+        <div class="rail-items">
+          <a href="#module-profile"><b>01</b><span>个人画像</span></a><i data-lucide="arrow-right"></i>
+          <a href="#module-resume"><b>02</b><span>简历生成</span></a><i data-lucide="arrow-right"></i>
+          <a href="#module-library"><b>03</b><span>简历工作台</span></a><i data-lucide="arrow-right"></i>
+          <a href="#module-workspace"><b>04</b><span>求职分析</span></a><i data-lucide="arrow-right"></i>
+          <a href="#module-interview"><b>05</b><span>模拟面试</span></a><i data-lucide="arrow-right"></i>
+          <a href="#module-applications"><b>06</b><span>投递记录</span></a>
+        </div>
       </div>
     </section>
 
-    <section class="product-strip" id="product" aria-labelledby="product-title">
-      <div class="section-heading section-heading--split">
-        <div><div class="eyebrow"><span class="eyebrow__dot"></span>产品核心</div><h2 id="product-title">不是另一个聊天框，而是一套求职资产工作台</h2></div>
-        <p>所有生成任务共享同一份结构化画像。材料只录入一次，后续简历、岗位匹配、面试与求职信都能复用，并保留来源与版本。</p>
+    <section class="section intro-section" id="introduction">
+      <div class="section-head split-head">
+        <div><div class="eyebrow">项目介绍</div><h2>不是一次性生成器，<br>而是个人求职资产工作台</h2></div>
+        <p>CareerAssistant 将零散的简历、JD、项目证据和面试反馈整理成结构化画像。后续每个产物都基于同一份画像生成，并保留来源、版本和用户确认记录。</p>
       </div>
-      <div class="loop-grid">
-        <article class="loop-card"><div class="loop-card__number">01</div><div class="loop-card__icon"><i data-lucide="inbox"></i></div><h3>集中录入</h3><p>上传简历、项目复盘、JD 与作品说明，系统抽取事实并保留原始证据。</p><span class="loop-card__meta">输入一次</span></article>
-        <article class="loop-card"><div class="loop-card__number">02</div><div class="loop-card__icon"><i data-lucide="badge-check"></i></div><h3>确认画像</h3><p>AI 只能提出新增或修改建议，用户确认后才成为后续生成的事实源。</p><span class="loop-card__meta">证据优先</span></article>
-        <article class="loop-card"><div class="loop-card__number">03</div><div class="loop-card__icon"><i data-lucide="blocks"></i></div><h3>多资产生成</h3><p>按目标岗位生成简历、差距诊断、面试题、模拟面试与求职信草稿。</p><span class="loop-card__meta">多处复用</span></article>
-        <article class="loop-card"><div class="loop-card__number">04</div><div class="loop-card__icon"><i data-lucide="history"></i></div><h3>复盘沉淀</h3><p>面试反馈形成画像提案，保留版本可回滚，让每次求职动作持续累积。</p><span class="loop-card__meta">长期陪伴</span></article>
+      <div class="principle-grid">
+        <article class="principle"><span>01</span><i data-lucide="database"></i><h3>画像先于生成</h3><p>所有简历、岗位分析与面试准备都读取结构化画像，避免每次重复描述同一段经历。</p></article>
+        <article class="principle"><span>02</span><i data-lucide="badge-check"></i><h3>证据优先</h3><p>画像条目关联简历导入、用户填写或面试报告来源，事实、建议与归档状态清晰可查。</p></article>
+        <article class="principle"><span>03</span><i data-lucide="user-check"></i><h3>用户拥有最终写入权</h3><p>AI 生成的改进只形成提案，经用户确认后才写入画像；拒绝提案不会覆盖原内容。</p></article>
+        <article class="principle"><span>04</span><i data-lucide="refresh-cw"></i><h3>一次输入，多处复用</h3><p>JD 与简历录入一次，可复用于差距诊断、岗位定制、面试题生成和模拟面试。</p></article>
       </div>
     </section>
-    <section class="demo-section" id="demo" aria-labelledby="demo-title">
-      <div class="section-heading section-heading--center">
-        <div class="eyebrow"><span class="eyebrow__dot"></span>交互功能演示</div>
-        <h2 id="demo-title">从个人画像，到可投递、可面试的完整闭环</h2>
-        <p>以下数据均为虚构示例。点击各功能页签，体验预设的 AI 协作过程。</p>
+
+    <section class="preview-section" id="product-preview">
+      <div class="section-head centered">
+        <div class="eyebrow">真实功能预览</div>
+        <h2>按真实项目模块逐一体验</h2>
+        <p>以下界面对应项目实际路由、字段、工作流与产物。点击模块标签查看完整示例。</p>
       </div>
-      <div class="demo-shell">
-        <div class="demo-tabs" role="tablist" aria-label="功能演示">
-          <button class="demo-tab is-active" type="button" role="tab" aria-selected="true" data-demo-tab="profile"><i data-lucide="contact-round"></i><span>个人画像</span></button>
-          <button class="demo-tab" type="button" role="tab" aria-selected="false" data-demo-tab="resume"><i data-lucide="file-user"></i><span>简历生成</span></button>
-          <button class="demo-tab" type="button" role="tab" aria-selected="false" data-demo-tab="matching"><i data-lucide="scan-search"></i><span>岗位匹配</span></button>
-          <button class="demo-tab" type="button" role="tab" aria-selected="false" data-demo-tab="interview"><i data-lucide="mic-2"></i><span>模拟面试</span></button>
-          <button class="demo-tab" type="button" role="tab" aria-selected="false" data-demo-tab="analysis"><i data-lucide="sparkles"></i><span>求职分析</span></button>
+
+      <div class="app-frame">
+        <div class="app-topbar">
+          <div class="app-brand"><span class="brand-mark"><i data-lucide="file-user"></i></span><b>CareerAssistant</b></div>
+          <div class="app-user"><span>公开演示</span><span class="avatar-demo">林</span></div>
+        </div>
+        <div class="module-tabs" role="tablist" aria-label="产品功能模块">
+          <button class="module-tab active" role="tab" aria-selected="true" data-module="profile"><i data-lucide="user-round"></i><span>个人画像</span><small>/knowledge-base</small></button>
+          <button class="module-tab" role="tab" aria-selected="false" data-module="resume"><i data-lucide="sparkles"></i><span>简历生成</span><small>/resume-generation</small></button>
+          <button class="module-tab" role="tab" aria-selected="false" data-module="library"><i data-lucide="files"></i><span>简历工作台</span><small>/resume-library</small></button>
+          <button class="module-tab" role="tab" aria-selected="false" data-module="workspace"><i data-lucide="scan-search"></i><span>求职分析</span><small>/workspace</small></button>
+          <button class="module-tab" role="tab" aria-selected="false" data-module="interview"><i data-lucide="messages-square"></i><span>模拟面试</span><small>/mock-interview</small></button>
+          <button class="module-tab" role="tab" aria-selected="false" data-module="applications"><i data-lucide="send"></i><span>投递记录</span><small>/applications</small></button>
         </div>
 
-        <section class="demo-panel is-active" data-demo-panel="profile" aria-label="个人画像演示">
-          <div class="demo-toolbar"><div><span class="section-kicker">Profile Workspace</span><h3>个人画像工作台</h3></div><div class="demo-toolbar__actions"><button class="button button--quiet" type="button"><i data-lucide="upload"></i>导入材料</button><button class="button button--dark" type="button"><i data-lucide="sparkles"></i>生成画像提案</button></div></div>
-          <div class="profile-workspace">
-            <aside class="source-list">
-              <div class="panel-title"><h4>材料与证据</h4><span>4 份</span></div>
-              <button class="source-item is-active" type="button" data-source="resume"><div class="file-icon"><i data-lucide="file-text"></i></div><div><strong>简历_林知远.pdf</strong><span>抽取 16 条事实</span></div><i data-lucide="chevron-right"></i></button>
-              <button class="source-item" type="button" data-source="project"><div class="file-icon file-icon--yellow"><i data-lucide="notebook-tabs"></i></div><div><strong>项目复盘_知识库.md</strong><span>抽取 7 条事实</span></div><i data-lucide="chevron-right"></i></button>
-              <button class="source-item" type="button" data-source="interview"><div class="file-icon file-icon--coral"><i data-lucide="messages-square"></i></div><div><strong>模拟面试复盘.docx</strong><span>抽取 5 条事实</span></div><i data-lucide="chevron-right"></i></button>
-              <button class="source-item" type="button" data-source="portfolio"><div class="file-icon file-icon--blue"><i data-lucide="folder-kanban"></i></div><div><strong>作品说明_架构篇.md</strong><span>抽取 3 条事实</span></div><i data-lucide="chevron-right"></i></button>
-              <div class="privacy-note"><i data-lucide="lock-keyhole"></i><p>公开演示中不读取或上传真实文件，以上均为示例记录。</p></div>
-            </aside>
+        <div class="module-stage">
+          <section class="module-panel active" id="module-profile" data-panel="profile" role="tabpanel">
+            <div class="module-heading">
+              <div><span class="small-kicker">结构化个人画像</span><h3>让每条经历都有来源、状态和复用价值</h3></div>
+              <div class="heading-actions"><button class="button small secondary demo-action"><i data-lucide="wand-sparkles"></i>完善画像</button><button class="button small primary demo-action"><i data-lucide="plus"></i>新增条目</button></div>
+            </div>
+            <div class="notice neutral"><i data-lucide="info"></i><div><b>预设虚构画像</b><span>演示人物“林知远”及所有学校、公司、项目、成绩和联系方式均为虚构，不对应项目作者或任何真实用户。</span></div></div>
+            <div class="profile-layout">
+              <aside class="filter-panel">
+                <div class="filter-head"><b>画像分类</b><button class="icon-button demo-action" title="切换视图"><i data-lucide="network"></i></button></div>
+                <button class="filter-row active"><span>基本信息</span><b>5</b></button>
+                <button class="filter-row"><span>教育经历</span><b>2</b></button>
+                <button class="filter-row"><span>项目经历</span><b>5</b></button>
+                <button class="filter-row"><span>专业技能</span><b>8</b></button>
+                <button class="filter-row"><span>目标岗位</span><b>3</b></button>
+                <button class="filter-row"><span>软性信息</span><b>4</b></button>
+                <button class="filter-row"><span>面试反馈</span><b>3</b></button>
+                <div class="filter-divider"></div>
+                <div class="filter-label">确认状态</div>
+                <label class="check-row"><input type="checkbox" checked><span>事实</span><b>26</b></label>
+                <label class="check-row"><input type="checkbox" checked><span>待确认</span><b>3</b></label>
+                <label class="check-row"><input type="checkbox"><span>已归档</span><b>1</b></label>
+              </aside>
+              <div class="profile-list">
+                <div class="list-toolbar"><div><b>基本信息</b><span>5 条记录</span></div><button class="icon-button demo-action" title="列表 / 节点图视图"><i data-lucide="list-tree"></i></button></div>
+                <article class="profile-item selected">
+                  <div class="item-title"><b>求职身份</b><span class="badge success">事实</span></div>
+                  <p>2026 届计算机科学与技术本科生，目标是后端开发 / 云原生方向的校园招聘岗位。</p>
+                  <div class="item-meta"><span><i data-lucide="paperclip"></i>用户填写</span><span>2 条关联证据</span></div>
+                </article>
+                <article class="profile-item">
+                  <div class="item-title"><b>联系方式</b><span class="badge success">事实</span></div>
+                  <p>resume-demo@example.com · +86 000 0000 0000 · 浙江省杭州市</p>
+                  <div class="item-meta"><span><i data-lucide="paperclip"></i>简历导入</span><span>简历 v3</span></div>
+                </article>
+                <article class="profile-item">
+                  <div class="item-title"><b>语言能力</b><span class="badge success">事实</span></div>
+                  <p>英语 CET-6 548 分，可阅读英文技术文档；普通话流利。</p>
+                  <div class="item-meta"><span><i data-lucide="paperclip"></i>证书材料</span><span>2 条关联证据</span></div>
+                </article>
+                <article class="profile-item">
+                  <div class="item-title"><b>工作地点偏好</b><span class="badge warning">待确认</span></div>
+                  <p>优先杭州、上海，可接受深圳；不考虑需要长期驻场的交付岗位。</p>
+                  <div class="item-meta"><span class="ai-source"><i data-lucide="sparkles"></i>AI 提案</span><button class="text-button demo-action">查看依据</button></div>
+                </article>
+              </div>
+              <aside class="profile-detail">
+                <div class="detail-head">
+                  <div class="large-avatar">林</div>
+                  <div><h4>林知远</h4><p>计算机科学与技术 · 2026 届</p></div>
+                  <button class="icon-button demo-action" title="更多操作"><i data-lucide="ellipsis"></i></button>
+                </div>
+                <div class="detail-section">
+                  <div class="detail-label">画像摘要</div>
+                  <p>具备 Java / Spring Boot 与云原生基础，有支付平台实习和两个可量化项目经历。优势是工程落地与问题拆解，正在补强分布式系统设计。</p>
+                </div>
+                <div class="detail-section">
+                  <div class="detail-label">技能图谱</div>
+                  <div class="skill-cloud"><span>Java · 熟练</span><span>Spring Boot · 熟练</span><span>MySQL · 熟练</span><span>Redis · 良好</span><span>Docker · 良好</span><span>Linux · 良好</span></div>
+                </div>
+                <div class="detail-section">
+                  <div class="detail-label">推荐投递方向</div>
+                  <div class="direction"><b>后端开发工程师</b><span>匹配 88%</span></div>
+                  <div class="direction"><b>云原生平台开发</b><span>匹配 78%</span></div>
+                  <div class="direction"><b>基础架构实习生</b><span>匹配 71%</span></div>
+                </div>
 
-            <div class="profile-detail">
-              <div class="profile-cover">
-                <div class="profile-cover__main">
-                  <div class="avatar avatar--large">林</div>
-                  <div>
-                    <div class="profile-name-line"><h4>林知远</h4><span class="tag tag--green"><i data-lucide="badge-check"></i>虚构演示人物</span></div>
-                    <p>AI 应用工程师 · Agent / RAG 方向</p>
-                    <div class="profile-meta"><span><i data-lucide="map-pin"></i>上海 · 可迁移</span><span><i data-lucide="briefcase-business"></i>1.5 年相关经历</span><span><i data-lucide="graduation-cap"></i>软件工程硕士</span></div>
+                <div class="detail-section">
+                  <div class="detail-label">教育与经历</div>
+                  <div class="timeline-mini">
+                    <div><b>云栖理工大学</b><span>计算机科学与技术 · 2022.09–2026.06</span></div>
+                    <div><b>星河云科技</b><span>后端开发实习生 · 支付网关重构</span></div>
+                    <div><b>云原生可观测实验平台</b><span>后端负责人 · 12 个实验服务</span></div>
                   </div>
                 </div>
-                <div class="profile-completeness"><div class="ring" aria-label="画像完整度 92%"><span>92%</span></div><div><strong>画像完整度</strong><span>信息充足，可生成完整简历</span></div></div>
-              </div>
-              <div class="profile-category">
-                <div class="category-title"><h4>核心能力</h4><button type="button" class="text-button">编辑 <i data-lucide="pencil"></i></button></div>
-                <div class="skill-cloud"><span>Python / FastAPI</span><span>LangGraph / Agent 编排</span><span>RAG / 向量检索</span><span>LLM 结构化输出</span><span>Vue 3 / TypeScript</span><span>MySQL / Redis</span><span>LLM 评测与观测</span><span>Docker / CI</span></div>
-              </div>
-              <div class="profile-category">
-                <div class="category-title"><h4>关键经历</h4><button type="button" class="text-button">查看全部 5 条 <i data-lucide="arrow-right"></i></button></div>
-                <button class="evidence-item is-selected" type="button" data-evidence="rag"><div class="evidence-item__icon"><i data-lucide="database"></i></div><div class="evidence-item__body"><div><strong>企业知识库问答平台：检索准确率从 71% 提升至 84%</strong><span class="tag tag--green">已确认</span></div><p>设计混合检索与重排链路，引入召回覆盖率、命中率和引用准确率指标；通过问题改写与上下文压缩降低无关片段。</p><div class="source-chips"><span><i data-lucide="paperclip"></i>项目复盘_知识库.md · 结果段落</span><span><i data-lucide="link"></i>简历.pdf · 项目经历 2</span></div></div></button>
-                <button class="evidence-item" type="button" data-evidence="agent"><div class="evidence-item__icon evidence-item__icon--blue"><i data-lucide="workflow"></i></div><div class="evidence-item__body"><div><strong>Agent 工作流：将平均处理时长从 8.4 分钟降至 3.1 分钟</strong><span class="tag tag--green">已确认</span></div><p>把材料抽取、分类、生成、评审拆成可观察节点，失败任务可从检查点恢复，减少重复调用与无效生成。</p><div class="source-chips"><span><i data-lucide="paperclip"></i>作品说明_架构篇.md · 编排设计</span></div></div></button>
-                <button class="evidence-item" type="button" data-evidence="review"><div class="evidence-item__icon evidence-item__icon--coral"><i data-lucide="message-circle-more"></i></div><div class="evidence-item__body"><div><strong>面试复盘：能清晰拆解复杂问题，但量化结果表达可加强</strong><span class="tag tag--yellow">提案中</span></div><p>建议补充稳定性和成本收益信息，并在回答中突出个人决策边界与取舍过程。</p><div class="source-chips"><span><i data-lucide="paperclip"></i>模拟面试复盘.docx · 综合评价</span></div></div></button>
+                <div class="detail-section">
+                  <div class="detail-label">软性信息</div>
+                  <p>擅长拆解复杂问题和沉淀复盘文档；偏好目标清晰、允许技术深度投入的团队。希望长期从事后端工程与云原生基础设施方向。</p>
+                </div>
+                <div class="detail-section evidence">
+                  <div class="detail-label">证据来源</div>
+                  <div class="evidence-row"><i data-lucide="file-text"></i><div><b>实习简历_2025秋.pdf</b><span>提取：支付网关重构、压测与监控</span></div></div>
+                  <div class="evidence-row"><i data-lucide="message-square-text"></i><div><b>项目复盘对话</b><span>补充：故障定位方法和团队协作</span></div></div>
+                </div>
+              </aside>
+            </div>
+          </section>
+
+          <section class="module-panel" id="module-resume" data-panel="resume" role="tabpanel">
+            <div class="module-heading">
+              <div><span class="small-kicker">八步简历生成</span><h3>从画像导入，到可导出的完整简历</h3></div>
+              <div class="heading-actions"><button class="button small secondary demo-action"><i data-lucide="image-up"></i>上传材料</button><button class="button small primary demo-action"><i data-lucide="download"></i>导出简历</button></div>
+            </div>
+            <div class="stepper">
+              <div class="step done"><b>1</b><span>基本信息</span></div><i data-lucide="chevron-right"></i>
+              <div class="step done"><b>2</b><span>教育经历</span></div><i data-lucide="chevron-right"></i>
+              <div class="step done"><b>3</b><span>专业技能</span></div><i data-lucide="chevron-right"></i>
+              <div class="step done"><b>4</b><span>实习经历</span></div><i data-lucide="chevron-right"></i>
+              <div class="step active"><b>5</b><span>项目经历</span></div><i data-lucide="chevron-right"></i>
+              <div class="step"><b>6</b><span>自我评价</span></div><i data-lucide="chevron-right"></i>
+              <div class="step"><b>7</b><span>证件照</span></div><i data-lucide="chevron-right"></i>
+              <div class="step"><b>8</b><span>生成与导出</span></div>
+            </div>
+            <div class="resume-builder">
+              <aside class="builder-controls">
+                <div class="control-title"><b>项目经历</b><span>已从个人画像导入</span></div>
+                <div class="field-group"><label>项目名称</label><div class="input-mock">云原生可观测实验平台</div></div>
+                <div class="field-row"><div class="field-group"><label>角色</label><div class="input-mock">后端负责人</div></div><div class="field-group"><label>时间</label><div class="input-mock">2025.03–2025.08</div></div></div>
+                <div class="field-group"><label>项目描述</label><div class="textarea-mock">设计统一指标采集与服务健康看板，支持 12 个实验服务的链路追踪与告警聚合。</div></div>
+                <div class="control-tools"><button class="tool-button demo-action"><i data-lucide="wand-sparkles"></i>AI 包装</button><button class="tool-button demo-action"><i data-lucide="list-checks"></i>STAR 结构化</button></div>
+                <div class="source-note"><i data-lucide="shield-check"></i><span>AI 只优化表达，不新增原文没有的数字、经历或成果。</span></div>
+                <div class="option-block"><b>简历模板</b><div class="segmented"><button class="active">校招一页纸</button><button>技术岗</button><button>通用版</button></div></div>
+                <div class="option-block"><b>目标篇幅</b><div class="segmented"><button class="active">一页</button><button>两页</button></div></div>
+                <div class="option-block"><b>投递方向</b><div class="chip-row"><span>后端开发工程师</span><span>云原生平台开发</span></div></div>
+              </aside>
+              <div class="resume-paper-wrap">
+                <div class="paper-toolbar"><span>A4 · 校招一页纸</span><div><button class="icon-button demo-action" title="缩小"><i data-lucide="zoom-out"></i></button><b>88%</b><button class="icon-button demo-action" title="放大"><i data-lucide="zoom-in"></i></button><button class="icon-button demo-action" title="打印 PDF"><i data-lucide="printer"></i></button></div></div>
+                <article class="resume-paper">
+                  <header class="resume-header">
+                    <div><h2>林知远</h2><p>后端开发工程师 · 2026 届</p></div>
+                    <div class="resume-contact"><span>resume-demo@example.com</span><span>+86 000 0000 0000</span><span>浙江省杭州市</span></div>
+                  </header>
+                  <section class="resume-section">
+                    <h3>教育经历</h3>
+                    <div class="resume-entry"><div class="entry-top"><b>云栖理工大学 · 计算机科学与技术（本科）</b><span>2022.09–2026.06</span></div><div class="entry-sub"><span>GPA 3.72/4.0 · 专业前 15%</span><span>浙江省优秀毕业生（虚构）</span></div><p>主修课程：数据结构、操作系统、计算机网络、数据库系统、分布式系统、软件工程。</p></div>
+                    <div class="resume-entry"><div class="entry-top"><b>南川大学 · 计算机科学交换学习</b><span>2025.02–2025.06</span></div><p>完成云计算与数据密集型应用课程，以小组第一完成弹性任务调度课程项目。</p></div>
+                  </section>
+                  <section class="resume-section">
+                    <h3>专业技能</h3>
+                    <p><b>语言与框架：</b>Java、Python、Spring Boot、Vue；熟悉并发编程与 REST API 设计。</p>
+                    <p><b>数据与中间件：</b>MySQL 索引与事务、Redis 缓存和分布式锁、RabbitMQ 消息可靠性。</p>
+                    <p><b>工程与云原生：</b>Linux、Git、Docker、Kubernetes 基础、OpenTelemetry、Prometheus、Grafana。</p>
+                  </section>
+                  <section class="resume-section">
+                    <h3>实习经历</h3>
+                    <div class="resume-entry"><div class="entry-top"><b>星河云科技 · 后端开发实习生</b><span>2025.07–2025.09</span></div><p>参与统一支付网关重构，负责退款链路状态机与幂等校验；整理故障注入用例并补齐监控指标，帮助团队提前发现 3 类异常状态流转。</p><p>与前端、测试和运维协作发布 2 个迭代，沉淀接口变更与回滚文档。</p></div>
+                  </section>
+                  <section class="resume-section">
+                    <h3>项目经历</h3>
+                    <div class="resume-entry"><div class="entry-top"><b>云原生可观测实验平台 · 后端负责人</b><span>2025.03–2025.08</span></div><p>设计统一指标采集与服务健康看板，为 12 个实验服务提供链路追踪、告警聚合和故障回放；采用 Kafka 异步写入与分级存储，优化后端处理线程池。</p></div>
+                    <div class="resume-entry"><div class="entry-top"><b>校园课程协作平台 · 全栈开发</b><span>2024.09–2025.01</span></div><p>基于 Spring Boot 与 Vue 实现课程资料、作业批改和学习小组模块；使用 Redis 缓存热门资料并完成权限与审计日志设计。</p></div>
+                    <div class="resume-entry"><div class="entry-top"><b>轻量容器调度器 · 独立研究</b><span>2024.03–2024.07</span></div><p>实现任务打分、资源预留与失败重调度策略，完成 600 个模拟任务的调度实验并整理算法取舍报告。</p></div>
+                  </section>
+                  <section class="resume-section">
+                    <h3>自我评价</h3>
+                    <p>习惯从问题边界、数据流和失败场景拆解任务，重视可验证结果与文档沉淀。能主动推动跨角色协作，希望在后端工程与云原生方向持续深耕。</p>
+                  </section>
+                </article>
               </div>
             </div>
+            <div class="feature-strip"><span><i data-lucide="upload"></i>从画像导入，仅补空字段或显式覆盖</span><span><i data-lucide="git-compare"></i>自然语言结构化与 AI 表达包装</span><span><i data-lucide="file-down"></i>Word / HTML / Markdown / 打印 PDF</span><span><i data-lucide="library"></i>生成后导入简历库</span></div>
+          </section>
 
-            <aside class="proposal-panel">
-              <div class="panel-title"><h4>画像提案</h4><span class="tag tag--yellow proposal-count">1 待确认</span></div>
-              <div class="proposal-card">
-                <div class="proposal-card__head"><div class="icon-tile icon-tile--yellow"><i data-lucide="lightbulb"></i></div><div><strong>补充“降本增效”能力证据</strong><span>来源：模拟面试复盘</span></div></div>
-                <p>建议新增画像条目：能够从调用成本、响应时长与人工接管率评估 Agent 方案，并据此调整模型分层和工具调用策略。</p>
-                <div class="diff-box"><span class="diff-add">+ 能力：LLM 成本与延迟优化</span><span class="diff-add">+ 证据：模型分层后任务平均成本下降 37%</span><span class="diff-context">= 不覆盖已有项目经历</span></div>
-                <div class="proposal-actions"><button class="button button--primary proposal-accept" type="button"><i data-lucide="check"></i>确认写入</button><button class="button button--quiet proposal-reject" type="button"><i data-lucide="x"></i>拒绝</button></div>
-              </div>
-              <div class="principle-box"><i data-lucide="shield-check"></i><div><strong>用户拥有最终写入权</strong><p>拒绝提案时原画像不变；确认后才会同步到后续生成任务。</p></div></div>
-              <div class="source-detail" id="source-detail"><div class="source-detail__label">当前证据</div><strong>项目复盘_知识库.md</strong><p>“上线混合检索与重排后，Top-5 命中率提升 13 个百分点，答案引用准确率达到 84%。”</p><span>定位：结果与复盘 / 第 4 段</span></div>
-            </aside>
-          </div>
-        </section>
-        <section class="demo-panel" data-demo-panel="resume" aria-label="简历生成演示">
-          <div class="demo-toolbar"><div><span class="section-kicker">Resume Studio</span><h3>从画像生成定向简历</h3></div><div class="demo-toolbar__actions"><button class="button button--quiet" type="button"><i data-lucide="history"></i>版本 v3</button><button class="button button--dark resume-generate" type="button"><i data-lucide="wand-sparkles"></i>重新生成</button></div></div>
-          <div class="resume-workspace">
-            <aside class="resume-steps">
-              <div class="panel-title"><h4>生成步骤</h4><span>8 / 8</span></div>
-              <ol>
-                <li class="is-done"><span>1</span><div><strong>选择投递方向</strong><small>AI 应用工程师</small></div></li><li class="is-done"><span>2</span><div><strong>确认基本信息</strong><small>来自个人画像</small></div></li>
-                <li class="is-done"><span>3</span><div><strong>教育与技能</strong><small>已导入 8 项技能</small></div></li><li class="is-done"><span>4</span><div><strong>实习与项目</strong><small>已选择 3 段经历</small></div></li>
-                <li class="is-done"><span>5</span><div><strong>岗位关键词</strong><small>命中 11 个</small></div></li><li class="is-done"><span>6</span><div><strong>内容优化</strong><small>应用 4 条建议</small></div></li>
-                <li class="is-done"><span>7</span><div><strong>模板与渲染</strong><small>专业简版</small></div></li><li class="is-active"><span>8</span><div><strong>检查与导出</strong><small>内容完整度 96%</small></div></li>
-              </ol>
-              <div class="resume-quality"><div><span>内容完整度</span><strong>96%</strong></div><div class="progress-track"><span style="width: 96%"></span></div><small>已覆盖教育、技能、经历、项目与成果</small></div>
-            </aside>
-
-            <div class="resume-stage">
-              <div class="resume-toolbar"><div class="segmented"><button class="is-active" type="button">预览</button><button type="button">对比</button></div><div><button class="icon-button" type="button" aria-label="缩小"><i data-lucide="zoom-out"></i></button><span>86%</span><button class="icon-button" type="button" aria-label="放大"><i data-lucide="zoom-in"></i></button><button class="button button--quiet" type="button"><i data-lucide="download"></i>导出</button></div></div>
-              <article class="resume-paper" id="resume-paper">
-                <header class="resume-header"><div><h2>林知远</h2><p>AI 应用工程师 · Agent / RAG 方向</p></div><div class="resume-contact"><span>上海 · 可迁移</span><span>resume-demo@example.com</span><span>+86 000 0000 0000</span></div></header>
-                <section class="resume-section"><h3>个人优势</h3><p>软件工程硕士，具备 AI 应用、后端服务与前端交付的一体化能力。熟悉 Agent 工作流、RAG 检索、结构化生成与 LLM 评测，能够从产品目标出发拆解问题，并通过指标驱动持续优化效果、稳定性与调用成本。</p></section>
-                <section class="resume-section"><h3>专业技能</h3><div class="resume-skill-row"><strong>AI 应用</strong><span>Agent 编排、RAG、提示词工程、结构化输出、模型分层、LLM 评测与可观测性</span></div><div class="resume-skill-row"><strong>后端开发</strong><span>Python、FastAPI、SQLAlchemy、LangGraph、REST、SSE、WebSocket、Docker</span></div><div class="resume-skill-row"><strong>前端与数据</strong><span>Vue 3、TypeScript、Pinia、MySQL、Redis、向量检索、Elasticsearch</span></div></section>
-                <section class="resume-section"><h3>工作经历</h3>
-                  <div class="resume-entry"><div class="resume-entry__title"><div><strong>云杉智能 · AI 应用工程师</strong><span>上海</span></div><time>2025.03 — 至今</time></div><ul><li>负责企业知识库问答产品的检索与生成链路，设计关键词、向量与重排融合方案，将 Top-5 命中率从 71% 提升至 84%，答案引用准确率提升 13 个百分点。</li><li>将材料抽取、问题分类、答案生成与质量评审拆分为可观察 Agent 节点，引入结构化校验和失败重试，使无效输出率下降 42%。</li><li>建立模型分层与上下文压缩策略，按任务复杂度分配模型和上下文，在效果稳定前提下将平均单次调用成本降低 37%。</li></ul></div>
-                  <div class="resume-entry"><div class="resume-entry__title"><div><strong>墨方科技 · 后端开发实习生</strong><span>杭州</span></div><time>2024.06 — 2025.02</time></div><ul><li>参与内容运营平台开发，完成任务编排、权限校验与审计日志模块，覆盖 6 类业务任务，线上相关故障率下降 28%。</li><li>优化热点查询与缓存策略，将核心报表 P95 响应时间从 1.8 秒降至 620 毫秒，并补充契约测试与接口文档。</li></ul></div>
-                </section>
-                <section class="resume-section"><h3>项目经历</h3>
-                  <div class="resume-entry"><div class="resume-entry__title"><div><strong>多智能体求职协作平台 · 核心开发</strong><span>个人项目</span></div><time>2025.08 — 2026.02</time></div><ul><li>设计“个人画像 → 多资产生成”的数据闭环，简历、岗位匹配与模拟面试共享同一份事实源，减少重复录入并保留证据链路。</li><li>实现可增量重算的工作流，当简历或 JD 发生变化时仅重跑受影响节点；配合同步锁与超时链，将长任务稳定性提升到 98.6%。</li><li>构建语音模拟面试与结构化评估流程，输出能力雷达、回答建议和画像更新提案，人工确认后才写回长期画像。</li></ul></div>
-                  <div class="resume-entry"><div class="resume-entry__title"><div><strong>企业文档审校助手 · 独立完成</strong><span>课程与研究项目</span></div><time>2024.09 — 2025.01</time></div><ul><li>面向内部文档设计规则与语义双通道审校流程，覆盖术语、数字一致性和敏感表述三类问题，测试集召回率达到 81%。</li><li>通过引用定位和差异高亮提供可解释反馈，人工复核时间由平均每篇 14 分钟降至 6 分钟。</li></ul></div>
-                </section>
-                <section class="resume-section resume-section--last"><h3>教育经历与荣誉</h3><div class="resume-entry__title"><div><strong>南城工业大学 · 软件工程硕士</strong><span>研究方向：智能软件工程</span></div><time>2022.09 — 2025.06</time></div><div class="resume-entry__title"><div><strong>东江理工学院 · 计算机科学与技术学士</strong><span>专业排名前 10%</span></div><time>2018.09 — 2022.06</time></div><p class="resume-awards">校级研究生创新项目一等奖 · 优秀毕业生 · 研究生学业奖学金（连续两年）</p></section>
-              </article>
+          <section class="module-panel" id="module-library" data-panel="library" role="tabpanel">
+            <div class="module-heading">
+              <div><span class="small-kicker">简历工作台</span><h3>针对一块内容改写，按一条结果确认</h3></div>
+              <div class="heading-actions"><button class="button small secondary demo-action"><i data-lucide="upload"></i>上传简历</button><button class="button small primary demo-action"><i data-lucide="scan-search"></i>针对岗位优化</button></div>
             </div>
+            <div class="library-layout">
+              <aside class="document-list">
+                <div class="list-toolbar"><b>简历文档</b><button class="icon-button demo-action" title="回收站"><i data-lucide="trash-2"></i></button></div>
+                <button class="doc-item active"><i data-lucide="file-text"></i><div><b>后端开发校招简历</b><span>v3 · 今天 14:32</span></div></button>
+                <button class="doc-item"><i data-lucide="file-text"></i><div><b>云原生岗位定制稿</b><span>v2 · 昨天</span></div></button>
+                <button class="doc-item"><i data-lucide="file-text"></i><div><b>通用版简历</b><span>v1 · 09-28</span></div></button>
+                <div class="doc-import"><i data-lucide="file-up"></i><b>导入已有简历</b><span>PDF / DOCX / TXT / MD</span></div>
+              </aside>
+              <div class="editor-pane">
+                <div class="editor-toolbar">
+                  <div><b>后端开发校招简历</b><span class="badge success">当前版本 v3</span></div>
+                  <div class="editor-actions"><button class="tool-button demo-action"><i data-lucide="scan"></i>区域框选</button><button class="tool-button demo-action"><i data-lucide="git-compare"></i>版本对比</button><button class="icon-button demo-action" title="导出"><i data-lucide="download"></i></button></div>
+                </div>
+                <div class="editable-page">
+                  <h2>林知远</h2><p class="page-contact">resume-demo@example.com · +86 000 0000 0000 · 杭州</p>
+                  <h4>实习经历</h4>
+                  <div class="selection-box">
+                    <div class="selection-tag"><i data-lucide="message-square-text"></i>已框选：实习经历第 1 段</div>
+                    <p>参与统一支付网关重构，负责退款链路状态机与幂等校验；整理故障注入用例并补齐监控指标，帮助团队提前发现 3 类异常状态流转。</p>
+                  </div>
+                  <h4>项目经历</h4>
+                  <p><b>云原生可观测实验平台 · 后端负责人</b></p>
+                  <p>设计统一指标采集与服务健康看板，为 12 个实验服务提供链路追踪、告警聚合和故障回放；采用 Kafka 异步写入与分级存储。</p>
+                  <p><b>校园课程协作平台 · 全栈开发</b></p>
+                  <p>基于 Spring Boot 与 Vue 实现课程资料、作业批改和学习小组模块；使用 Redis 缓存热门资料并完成权限与审计日志设计。</p>
+                </div>
+              </div>
+              <aside class="rewrite-panel">
+                <div class="rewrite-head"><div><b>区域改写</b><span>针对选中内容生成候选</span></div><i data-lucide="sparkles"></i></div>
+                <div class="prompt-box">让表达更强调工程责任和验证过程，不要增加新的数据。</div>
+                <div class="candidate">
+                  <div class="candidate-head"><span>候选 01</span><button class="text-button demo-action">采纳</button></div>
+                  <p>负责退款链路状态机与幂等校验设计，通过故障注入覆盖异常状态流转，并补充核心指标，使 3 类潜在问题在发布前得到定位。</p>
+                  <div class="candidate-meta"><span>保持事实一致</span><span>影响：清晰度 +</span></div>
+                </div>
+                <div class="candidate">
+                  <div class="candidate-head"><span>候选 02</span><button class="text-button demo-action">采纳</button></div>
+                  <p>围绕退款链路的可靠性重构状态机和幂等规则，结合故障注入与监控指标验证异常场景，提前暴露 3 类状态流转问题。</p>
+                  <div class="candidate-meta"><span>保持事实一致</span><span>影响：岗位匹配 +</span></div>
+                </div>
+                <div class="rewrite-actions"><button class="tool-button demo-action">再生成</button><button class="tool-button demo-action">与原稿对比</button></div>
+              </aside>
+            </div>
+            <div class="feature-strip"><span><i data-lucide="history"></i>多版本管理与逐条采纳</span><span><i data-lucide="rotate-ccw"></i>版本回滚、恢复与彻底删除</span><span><i data-lucide="panel-right"></i>左右对比与区域对话改写</span><span><i data-lucide="file-output"></i>导出 HTML / Word</span></div>
+          </section>
 
-            <aside class="suggestion-panel">
-              <div class="panel-title"><h4>AI 优化建议</h4><span class="tag tag--blue">4 条</span></div>
-              <div class="suggestion-card"><div class="suggestion-card__head"><strong>补充量化结果</strong><span class="impact impact--high">高影响</span></div><p>“优化检索链路”建议加入命中率提升幅度，让成果更可信。</p><div class="suggestion-diff"><span class="diff-remove">- 优化了知识库检索链路</span><span class="diff-add">+ Top-5 命中率从 71% 提升至 84%</span></div><button class="button button--secondary suggestion-apply" type="button"><i data-lucide="check"></i>应用建议</button></div>
-              <div class="suggestion-card"><div class="suggestion-card__head"><strong>增强岗位关键词</strong><span class="impact impact--mid">中影响</span></div><p>目标 JD 强调 Agent 评估与稳定性，可在项目经历中前置。</p><div class="keyword-row"><span>Agent 评估</span><span>稳定性</span><span>工具调用</span></div><button class="button button--secondary suggestion-apply" type="button"><i data-lucide="check"></i>应用建议</button></div>
-              <div class="proposal-callout"><i data-lucide="git-compare-arrows"></i><div><strong>不会静默覆盖</strong><p>每次改动生成新版本，可逐条采纳或回滚。</p></div></div>
-            </aside>
-          </div>
-        </section>
+          <section class="module-panel" id="module-workspace" data-panel="workspace" role="tabpanel">
+            <div class="module-heading">
+              <div><span class="small-kicker">对话式求职分析</span><h3>一次贴 JD，右侧持续沉淀结构化结果</h3></div>
+              <div class="heading-actions"><button class="button small secondary demo-action"><i data-lucide="paperclip"></i>上传简历</button><button class="button small primary demo-action"><i data-lucide="file-down"></i>导出结果</button></div>
+            </div>
+            <div class="workspace-layout">
+              <div class="chat-pane">
+                <div class="chat-head"><div class="agent-avatar"><i data-lucide="sparkles"></i></div><div><b>CareerAssistant</b><span>已加载个人画像与简历 v3</span></div><button class="icon-button demo-action" title="新会话"><i data-lucide="square-pen"></i></button></div>
+                <div class="chat-stream">
+                  <div class="message user-message"><p>请分析这个后端开发岗位，重点告诉我与个人画像之间的差距，以及简历需要怎么调整。</p></div>
+                  <div class="message agent-message"><p>我已完成 JD 解析和 Gap 分析。岗位重点是高并发服务、MySQL 与可观测能力；你的支付实习和可观测平台项目覆盖较完整，分布式一致性与 Kubernetes 实践仍需加强。</p><div class="agent-tags"><span>JD 分析</span><span>Gap 分析</span><span>岗位定制</span></div></div>
+                  <div class="message user-message"><p>请生成一份保守润色的岗位定制稿，不要虚构任何经历。</p></div>
+                  <div class="message agent-message"><p>已按“保守润色”生成定制稿。只调整模块顺序和表达重点，所有数字与经历均来自原简历。你可以在“岗位定制”中逐模块确认。</p></div>
+                </div>
+                <div class="chat-input"><span>继续追问，或输入“生成面试题”</span><div><button class="icon-button" title="上传"><i data-lucide="paperclip"></i></button><button class="send-button demo-action" title="发送"><i data-lucide="arrow-up"></i></button></div></div>
+              </div>
+              <div class="results-pane">
+                <div class="result-tabs" role="tablist" aria-label="求职分析结果">
+                  <button class="result-tab active" data-result="jd">JD 分析</button>
+                  <button class="result-tab" data-result="profile">个人画像</button>
+                  <button class="result-tab" data-result="gap">Gap 分析</button>
+                  <button class="result-tab" data-result="tailor">岗位定制</button>
+                  <button class="result-tab" data-result="questions">面试准备</button>
+                  <button class="result-tab" data-result="debug">调试</button>
+                </div>
+                <div class="result-content active" data-result-panel="jd">
+                  <div class="result-title"><div><span class="badge info">已解析</span><h4>后端开发工程师（校招）</h4></div><button class="tool-button demo-action"><i data-lucide="file-down"></i>导出 JSON</button></div>
+                  <div class="description-grid"><div><span>公司</span><b>星河云科技</b></div><div><span>地点</span><b>杭州 / 上海</b></div><div><span>薪资</span><b>18–24K · 14 薪</b></div><div><span>学历</span><b>本科及以上</b></div></div>
+                  <div class="jd-summary"><b>岗位摘要</b><p>负责云平台核心服务研发，参与需求分析、系统设计、编码、测试和上线，保障服务稳定性与可维护性。</p></div>
+                  <div class="requirements">
+                    <div class="req-group"><b>核心要求</b><span class="weight high">重要</span><p>Java 基础扎实，理解集合、并发和 JVM；熟悉 Spring Boot、MySQL、Redis。</p></div>
+                    <div class="req-group"><b>工程能力</b><span class="weight high">重要</span><p>具备接口设计、测试、故障排查与性能优化经验，关注线上可观测性。</p></div>
+                    <div class="req-group"><b>加分项</b><span class="weight bonus">加分</span><p>了解 Kubernetes、消息队列、分布式系统，有开源或云平台项目经验。</p></div>
+                  </div>
+                </div>
+                <div class="result-content" data-result-panel="profile">
+                  <div class="result-title"><h4>本次使用的个人画像</h4><span>26 条事实 · 3 条建议</span></div>
+                  <div class="profile-reuse-grid">
+                    <div><span>优势技能</span><b>Java / Spring Boot / MySQL</b><small>来源：项目经历与技能条目</small></div>
+                    <div><span>相关经历</span><b>支付网关实习 + 3 个工程项目</b><small>来源：实习与项目证据</small></div>
+                    <div><span>目标方向</span><b>后端开发、云原生平台</b><small>来源：目标岗位</small></div>
+                    <div><span>待补强</span><b>分布式设计、Kubernetes 实践</b><small>来源：Gap 分析提案</small></div>
+                  </div>
+                </div>
+                <div class="result-content" data-result-panel="gap">
+                  <div class="result-title"><h4>岗位匹配度</h4><strong class="score">72%</strong></div>
+                  <div class="score-bar"><span></span></div>
+                  <div class="gap-grid">
+                    <div class="gap-column strength"><b>已覆盖</b><ul><li>Java、Spring Boot 服务开发</li><li>MySQL 事务与索引实践</li><li>监控指标、故障排查</li><li>团队协作与文档沉淀</li></ul></div>
+                    <div class="gap-column weakness"><b>需要补强</b><ul><li>高并发容量评估缺少完整案例</li><li>Kubernetes 主要停留在基础使用</li><li>分布式一致性只有课程与实验经验</li></ul></div>
+                  </div>
+                  <div class="action-plan"><b>建议行动</b><p>优先补充可观测平台的容量数据与调优过程；用 STAR 结构整理支付网关故障场景；面试前复习幂等、消息可靠性和分布式锁。</p></div>
+                </div>
+                <div class="result-content" data-result-panel="tailor">
+                  <div class="result-title"><div><h4>岗位定制稿</h4><span>模式：保守润色</span></div><div class="segmented compact"><button>保守润色</button><button class="active">岗位重点</button><button>一页精简</button></div></div>
+                  <div class="compare-head"><span>原稿 · 简历 v3</span><span>定制稿 · 未保存</span></div>
+                  <div class="compare-grid">
+                    <div class="compare-cell"><b>项目概述</b><p>设计统一指标采集与服务健康看板，支持 12 个实验服务。</p></div>
+                    <div class="compare-cell changed"><b>项目概述</b><p>围绕服务稳定性设计统一指标采集与健康看板，为 12 个实验服务提供链路追踪和故障回放。</p><span class="change-label">强化岗位关键词</span></div>
+                    <div class="compare-cell"><b>技能顺序</b><p>语言与框架、数据与中间件、工程与云原生。</p></div>
+                    <div class="compare-cell changed"><b>技能顺序</b><p>后端开发、数据与中间件、可观测与云原生。</p><span class="change-label">按 JD 重排</span></div>
+                  </div>
+                  <div class="tailor-actions"><button class="tool-button demo-action">逐模块确认</button><button class="button small primary demo-action">保存为新版本</button></div>
+                </div>
+                <div class="result-content" data-result-panel="questions">
+                  <div class="result-title"><h4>面试准备题</h4><span>难度、类别、要点、参考回答</span></div>
+                  <div class="question-card"><div><span class="badge info">中等 · 系统设计</span><b>如何保证退款接口的幂等性？</b></div><p><b>答题要点：</b>业务幂等键、唯一约束、状态机、重复请求返回、异常补偿。</p><details><summary>查看参考回答</summary><p>以退款单号作为幂等键，在数据库唯一索引和状态机约束下执行；重复请求读取首次结果，超时场景通过对账任务补偿。</p></details></div>
+                  <div class="question-card"><div><span class="badge warning">困难 · 性能优化</span><b>你的可观测平台如何降低写入链路压力？</b></div><p><b>答题要点：</b>批量写入、异步队列、采样、分级存储、背压与失败重试。</p><details><summary>查看参考回答</summary><p>将指标先写入消息队列，消费者按服务和时间窗口批量落库，对高频低价值指标做采样，同时监控队列积压并动态限流。</p></details></div>
+                </div>
+                <div class="result-content" data-result-panel="debug">
+                  <div class="result-title"><h4>执行调试</h4><span>用于查看真实系统分析链路</span></div>
+                  <div class="debug-row"><span>Session ID</span><code>sess_demo_20261004_1432</code></div>
+                  <div class="debug-row"><span>触发 Agent 链路</span><code>planner → jd_analysis → gap_analysis → resume_tailor</code></div>
+                  <div class="debug-row"><span>Resume Content JSON</span><button class="text-button demo-action">展开查看</button></div>
+                  <div class="debug-row"><span>Render Config</span><button class="text-button demo-action">展开查看</button></div>
+                  <div class="debug-note"><i data-lucide="bug"></i><span>真实项目还支持 SSE 流式进度、Agent 状态与结构化输出检查。</span></div>
+                </div>
+              </div>
+            </div>
+          </section>
 
-        <section class="demo-panel" data-demo-panel="matching" aria-label="岗位匹配演示">
-          <div class="demo-toolbar"><div><span class="section-kicker">Job Match</span><h3>JD 与个人画像双向匹配</h3></div><div class="demo-toolbar__actions"><button class="button button--quiet" type="button"><i data-lucide="history"></i>历史任务</button><button class="button button--dark match-analyze" type="button"><i data-lucide="scan-search"></i>开始分析</button></div></div>
-          <div class="matching-workspace">
-            <section class="jd-card">
-              <div class="panel-title"><h4>目标岗位</h4><span class="tag tag--green">JD 已解析</span></div>
-              <div class="job-title"><div class="company-logo company-logo--green">桥</div><div><h4>AI 应用工程师（Agent 方向）</h4><p>云桥智能（虚构公司） · 上海 · 25–40K · 1–3 年</p></div></div>
-              <div class="jd-block"><strong>岗位目标</strong><p>负责企业级 Agent 与知识检索应用的设计、开发和持续优化，对效果、稳定性与调用成本负责。</p></div>
-              <div class="jd-block"><strong>关键要求</strong><ul><li>熟悉 Python 与 FastAPI，具备完整服务端交付能力</li><li>有 RAG、Agent 编排、工具调用或结构化生成经验</li><li>能够设计评测体系，定位检索、生成与工具调用问题</li><li>理解高并发、长耗时任务与异步流式交互</li></ul></div>
-              <div class="keyword-row"><span>LangGraph</span><span>RAG</span><span>FastAPI</span><span>评测体系</span><span>稳定性</span><span>成本优化</span></div>
-            </section>
-            <section class="match-result">
-              <div class="score-card"><div class="score-ring"><strong>86</strong><span>综合匹配</span></div><div><span class="section-kicker">Match Result</span><h3>高度匹配，建议优先投递</h3><p>核心能力与岗位目标高度重合，主要差距在大规模生产环境与团队协作深度。</p></div></div>
-              <div class="dimension-grid">
-                <div class="dimension"><div><span>核心技能</span><strong>92%</strong></div><div class="progress-track"><span style="width: 92%"></span></div><small>Agent、RAG、Python、FastAPI 均有证据</small></div>
-                <div class="dimension"><div><span>项目相关性</span><strong>88%</strong></div><div class="progress-track progress-track--blue"><span style="width: 88%"></span></div><small>求职协作平台覆盖编排、评测与稳定性</small></div>
-                <div class="dimension"><div><span>经验年限</span><strong>78%</strong></div><div class="progress-track progress-track--yellow"><span style="width: 78%"></span></div><small>相关经历 1.5 年，接近岗位要求</small></div>
-                <div class="dimension"><div><span>规模与行业</span><strong>66%</strong></div><div class="progress-track progress-track--coral"><span style="width: 66%"></span></div><small>缺少大型企业级生产环境案例</small></div>
+          <section class="module-panel" id="module-interview" data-panel="interview" role="tabpanel">
+            <div class="limit-callout">
+              <i data-lucide="triangle-alert"></i>
+              <div><b>此模块仅展示真实产品的交互流程与预设结果</b><p>公开静态站不连接后端、LLM、ASR、TTS、WebSocket 和数据库，因此无法进行真实语音面试、实时追问、模型评价与中断恢复。请运行 CareerAssistant 完整项目体验真实模拟面试。</p></div>
+              <a class="button small primary" href="https://github.com/Lzy22301093/CareerAssistant" target="_blank" rel="noreferrer"><i data-lucide="external-link"></i>获取完整体验</a>
+            </div>
+            <div class="module-heading">
+              <div><span class="small-kicker">AI 语音模拟面试</span><h3>准备、面试、报告的完整真实流程</h3></div>
+            </div>
+            <div class="interview-steps">
+              <button class="interview-step active" data-interview-step="prepare"><b>1</b><div><span>准备</span><small>JD · 简历 · 声音</small></div></button>
+              <button class="interview-step" data-interview-step="conduct"><b>2</b><div><span>面试</span><small>多轮语音问答</small></div></button>
+              <button class="interview-step" data-interview-step="report"><b>3</b><div><span>报告</span><small>证据与画像提案</small></div></button>
+            </div>
+            <div class="interview-content active" data-interview-panel="prepare">
+              <div class="interview-form">
+                <div class="form-section"><b>面试目标</b><div class="field-row"><div class="field-group"><label>公司</label><div class="input-mock">星河云科技（可选）</div></div><div class="field-group"><label>目标岗位</label><div class="input-mock">后端开发工程师</div></div></div><div class="field-group"><label>岗位 JD</label><div class="textarea-mock large">负责云平台核心服务研发，要求熟悉 Java、Spring Boot、MySQL、Redis，具备接口设计、测试与故障排查能力，了解 Kubernetes 和消息队列者优先。</div></div></div>
+                <div class="form-section"><b>本场设置</b><div class="field-row"><div class="field-group"><label>面试轮数</label><div class="input-mock">8 轮</div></div><div class="field-group"><label>本场简历</label><div class="input-mock">后端开发校招简历（v3）</div></div></div><div class="toggle-row"><span>允许个人画像补充</span><button class="toggle on demo-action" aria-label="允许个人画像补充"><span></span></button></div><div class="field-group"><label>面试官风格</label><div class="segmented"><button class="active">专业面试官</button><button>轻松聊天</button><button>简洁干练</button></div></div><div class="field-row"><div class="field-group"><label>语速</label><div class="range-mock"><span style="width:54%"></span></div></div><button class="tool-button demo-action"><i data-lucide="volume-2"></i>声音试听</button></div></div>
+                <button class="button button-primary start-demo"><i data-lucide="mic"></i>开始模拟面试</button>
               </div>
-              <div class="gap-grid">
-                <article class="gap-card gap-card--strength"><div class="gap-card__head"><div class="icon-tile icon-tile--green"><i data-lucide="shield-plus"></i></div><strong>竞争优势</strong></div><ul><li>同时具备 Agent 编排、RAG 与前端交付能力</li><li>有评测指标、成本优化和稳定性的量化成果</li><li>理解“AI 提案 → 用户确认”的产品边界</li></ul></article>
-                <article class="gap-card gap-card--gap"><div class="gap-card__head"><div class="icon-tile icon-tile--coral"><i data-lucide="triangle-alert"></i></div><strong>待补差距</strong></div><ul><li>补充百万级文档或高并发场景的处理经验</li><li>突出跨团队推进、上线节奏与风险控制</li><li>准备一个从指标异常到根因定位的完整案例</li></ul></article>
-              </div>
-              <div class="next-action"><div class="icon-tile icon-tile--blue"><i data-lucide="route"></i></div><div><strong>推荐下一步</strong><span>生成该岗位定向简历 v4，并启动 3 轮技术模拟面试。</span></div><button class="button button--primary next-demo" type="button" data-next-tab="resume">生成定向简历<i data-lucide="arrow-right"></i></button></div>
-            </section>
-          </div>
-        </section>
-        <section class="demo-panel" data-demo-panel="interview" aria-label="模拟面试演示">
-          <div class="demo-toolbar"><div><span class="section-kicker">Mock Interview</span><h3>语音模拟面试与结构化反馈</h3></div><div class="demo-toolbar__actions"><button class="button button--quiet" type="button"><i data-lucide="settings-2"></i>面试设置</button><button class="button button--dark interview-start" type="button"><i data-lucide="play"></i>开始演示</button></div></div>
-          <div class="interview-workspace">
-            <section class="interview-stage">
-              <div class="interview-progress"><div><span>AI 应用工程师 · 技术一面</span><strong>第 <em id="interview-index">1</em> / 3 题</strong></div><div class="progress-track"><span id="interview-progress-bar" style="width: 33%"></span></div></div>
-              <div class="interviewer-card">
-                <div class="interviewer-avatar"><div class="avatar avatar--interviewer">顾</div><span class="voice-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
-                <div><div class="interviewer-meta"><strong>顾言 · AI 面试官</strong><span class="tag tag--green">语音演示</span></div><h3 id="interview-question">你的知识库项目里如何判断 RAG 的检索质量？除了最终答案准确率，还会关注哪些指标？</h3><p id="interview-followup">请结合具体项目说明指标定义、采集方式和优化动作。</p></div>
-              </div>
-              <div class="answer-area">
-                <div class="answer-area__head"><div><i data-lucide="audio-lines"></i><strong>模拟回答</strong></div><span>预设示例 · 01:24</span></div>
-                <p id="interview-answer">我会把检索质量与生成质量拆开评估。检索侧关注 Top-K 命中率、召回覆盖率和 MRR；生成侧关注引用准确率、事实一致性与拒答合理性。项目中我们使用人工标注测试集做离线回归，再采集线上点击与追问率做近似反馈。</p>
-                <div class="answer-transcript"><span>回答清晰</span><span>指标完整</span><span>建议补充误差样本分析</span></div>
-              </div>
-              <div class="interview-actions"><button class="button button--quiet" type="button"><i data-lucide="mic"></i>切换语音回答</button><button class="button button--primary interview-next" type="button">下一题<i data-lucide="arrow-right"></i></button></div>
-            </section>
-            <aside class="interview-side">
-              <div class="live-evaluation"><div class="panel-title"><h4>实时评估</h4><span class="tag tag--green">良好</span></div><div class="evaluation-row"><span>内容相关性</span><div class="progress-track"><span style="width: 88%"></span></div><strong>88</strong></div><div class="evaluation-row"><span>结构表达</span><div class="progress-track progress-track--blue"><span style="width: 82%"></span></div><strong>82</strong></div><div class="evaluation-row"><span>证据充分性</span><div class="progress-track progress-track--yellow"><span style="width: 79%"></span></div><strong>79</strong></div><div class="evaluation-row"><span>岗位相关度</span><div class="progress-track progress-track--coral"><span style="width: 86%"></span></div><strong>86</strong></div></div>
-              <div class="report-card"><div class="report-card__score"><strong>82</strong><span>面试准备度</span></div><div><h4>综合反馈</h4><p>技术框架完整、指标意识较好。建议在回答中减少概念铺垫，把“发现问题—决策依据—量化结果”放在前 30 秒。</p></div></div>
-              <div class="proposal-mini"><div class="proposal-mini__head"><i data-lucide="lightbulb"></i><strong>画像更新提案</strong></div><p>新增“RAG 效果评测体系设计”能力，并关联知识库项目证据。</p><div class="proposal-actions"><button class="button button--primary interview-accept" type="button">确认</button><button class="button button--quiet" type="button">稍后</button></div></div>
-            </aside>
-          </div>
-        </section>
+              <aside class="interview-summary"><div class="summary-icon"><i data-lucide="messages-square"></i></div><h4>本场将如何进行</h4><ol><li><b>生成 InterviewPlan</b><span>依据 JD、简历与画像规划考察主题</span></li><li><b>稳定多轮提问</b><span>保留 question_id / topic_id 并支持追问</span></li><li><b>语音双向交互</b><span>WebSocket 首帧 AUTH，串联 ASR 与 TTS</span></li><li><b>证据化评价</b><span>答题要点、评价证据与画像更新提案</span></li></ol></aside>
+            </div>
+            <div class="interview-content" data-interview-panel="conduct">
+              <div class="video-stage"><div class="interviewer-card"><div class="interviewer-avatar"><i data-lucide="user-round"></i></div><b>AI 面试官</b><span>专业面试官 · 正在提问</span><div class="waveform"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="candidate-card"><div class="candidate-avatar">林</div><b>林知远</b><span>麦克风已连接</span></div><div class="call-controls"><button class="icon-button" title="关闭麦克风"><i data-lucide="mic-off"></i></button><button class="end-call" title="结束面试"><i data-lucide="phone-off"></i></button><button class="icon-button" title="更多"><i data-lucide="ellipsis"></i></button></div></div>
+              <aside class="transcript"><div class="transcript-head"><b>实时对话</b><span>第 3 / 8 题</span></div><div class="transcript-item interviewer"><span>面试官</span><p>你提到退款链路使用了幂等校验，如果客户端超时后重复提交，系统如何避免重复退款？</p></div><div class="transcript-item candidate"><span>林知远</span><p>我们会以退款单号作为业务幂等键，首次请求落库后返回统一结果。重复请求命中唯一索引时直接读取已有退款状态，不再重复扣减。</p></div><div class="transcript-item interviewer"><span>面试官</span><p>如果首次请求已经触发支付渠道但数据库写入失败，你准备如何处理？</p></div><div class="listening"><i data-lucide="audio-lines"></i><span>演示界面 · 不进行实时 ASR</span></div></aside>
+            </div>
+            <div class="interview-content" data-interview-panel="report">
+              <div class="report-main"><div class="report-head"><div><span class="badge success">已完成</span><h4>后端开发工程师 · 模拟面试报告</h4><p>8 轮问答 · 32 分钟 · 演示结果</p></div><div class="report-score"><b>78</b><span>综合得分</span></div></div><div class="report-bars"><div><span>技术基础</span><div><i style="width:84%"></i></div><b>84</b></div><div><span>项目深度</span><div><i style="width:79%"></i></div><b>79</b></div><div><span>系统设计</span><div><i style="width:72%"></i></div><b>72</b></div><div><span>表达沟通</span><div><i style="width:77%"></i></div><b>77</b></div></div><div class="report-columns"><div><b>回答优势</b><ul><li>能用状态机解释退款幂等实现</li><li>对监控指标和故障注入有实际细节</li><li>承认知识边界，没有虚构经验</li></ul></div><div><b>待提升</b><ul><li>分布式一致性回答偏概念</li><li>容量评估缺少量化依据</li><li>建议先给结论，再展开实现</li></ul></div></div></div>
+              <aside class="proposal-panel"><div class="proposal-head"><i data-lucide="user-round-check"></i><div><b>画像更新提案</b><span>采纳后才会写入画像</span></div></div><div class="proposal-card"><span class="badge warning">待确认</span><p>建议新增：能结合故障注入与状态机设计保障退款可靠性。</p><div><button class="text-button demo-action">采纳</button><button class="text-button muted demo-action">拒绝</button><button class="text-button muted demo-action">稍后处理</button></div></div><div class="proposal-card"><span class="badge warning">待确认</span><p>建议补充：分布式一致性实践仍停留在课程与实验阶段。</p><div><button class="text-button demo-action">采纳</button><button class="text-button muted demo-action">拒绝</button><button class="text-button muted demo-action">稍后处理</button></div></div></aside>
+            </div>
+          </section>
 
-        <section class="demo-panel" data-demo-panel="analysis" aria-label="求职分析演示">
-          <div class="demo-toolbar"><div><span class="section-kicker">Career Copilot</span><h3>对话式求职分析</h3></div><div class="demo-toolbar__actions"><button class="button button--quiet" type="button"><i data-lucide="plus"></i>新会话</button><button class="button button--dark" type="button"><i data-lucide="bookmark"></i>保存结果</button></div></div>
-          <div class="analysis-workspace">
-            <aside class="conversation-list">
-              <div class="panel-title"><h4>最近会话</h4><button type="button" class="icon-button"><i data-lucide="search"></i></button></div>
-              <button class="conversation is-active" type="button"><i data-lucide="message-square-text"></i><div><strong>AI 应用工程师 JD 分析</strong><span>今天 14:20</span></div></button>
-              <button class="conversation" type="button"><i data-lucide="file-pen-line"></i><div><strong>项目经历量化改写</strong><span>昨天 19:05</span></div></button>
-              <button class="conversation" type="button"><i data-lucide="mail"></i><div><strong>求职信初稿</strong><span>10 月 2 日</span></div></button>
-              <button class="conversation" type="button"><i data-lucide="list-checks"></i><div><strong>技术面试题准备</strong><span>9 月 30 日</span></div></button>
-              <div class="memory-card"><i data-lucide="brain"></i><div><strong>长期画像已启用</strong><span>会话结论确认后可复用</span></div></div>
-            </aside>
-            <section class="chat-workspace">
-              <div class="chat-header"><div class="icon-tile icon-tile--blue"><i data-lucide="sparkles"></i></div><div><strong>求职分析助手</strong><span>已关联个人画像 v12 · 目标简历 v3 · JD-2410</span></div><span class="tag tag--green"><i data-lucide="database"></i>上下文已复用</span></div>
-              <div class="chat-messages" id="chat-messages">
-                <div class="message message--user"><div class="message-bubble">请分析这个 AI 应用工程师 JD，并告诉我投递前最应该补什么。</div><div class="avatar avatar--small">林</div></div>
-                <div class="message message--assistant"><div class="avatar avatar--small avatar--assistant"><i data-lucide="sparkles"></i></div><div class="message-bubble"><p>我已对照个人画像与目标简历完成分析。<strong>综合匹配度为 86%</strong>，可以优先投递。最值得补的不是基础技能，而是把现有经验组织成更贴近生产环境的证据。</p><div class="analysis-summary"><div><span class="summary-number">01</span><strong>补规模与稳定性证据</strong><p>在知识库项目中加入并发量、P95 延迟、失败恢复和灰度上线数据。</p></div><div><span class="summary-number">02</span><strong>前置成本优化成果</strong><p>把“模型分层后成本下降 37%”放入项目首条，直接回应 JD 的成本责任。</p></div><div><span class="summary-number">03</span><strong>准备根因定位案例</strong><p>准备一次检索命中下降的排查过程，体现指标拆解和跨团队协作。</p></div></div><div class="message-actions"><button type="button"><i data-lucide="file-plus-2"></i>生成简历改动</button><button type="button"><i data-lucide="list-checks"></i>生成面试题</button><button type="button"><i data-lucide="mail"></i>生成求职信</button></div></div></div>
-              </div>
-              <div class="prompt-chips"><button type="button" data-prompt="把差距转成 5 道面试追问">把差距转成 5 道面试追问</button><button type="button" data-prompt="帮我改写知识库项目第一条">改写知识库项目第一条</button><button type="button" data-prompt="生成一页求职信">生成一页求职信</button></div>
-              <div class="chat-input"><button class="icon-button" type="button" aria-label="添加附件"><i data-lucide="paperclip"></i></button><input type="text" placeholder="输入你想继续分析的问题…" aria-label="消息内容" /><button class="send-button" type="button" aria-label="发送"><i data-lucide="arrow-up"></i></button></div>
-            </section>
-            <aside class="context-panel">
-              <div class="panel-title"><h4>本次上下文</h4><span class="tag tag--blue">已复用</span></div>
-              <div class="context-block"><div class="context-block__head"><i data-lucide="contact"></i><strong>个人画像</strong></div><p>24 条事实 · 31 条证据<br />最后确认：RAG 评测能力</p></div>
-              <div class="context-block"><div class="context-block__head"><i data-lucide="file-check-2"></i><strong>目标简历</strong></div><p>AI 应用工程师简历 v3<br />完整度 96% · 匹配度 86%</p></div>
-              <div class="context-block"><div class="context-block__head"><i data-lucide="briefcase-business"></i><strong>岗位资产</strong></div><p>云桥智能 · Agent 方向<br />11 个关键词 · 4 个差距维度</p></div>
-              <div class="principle-box"><i data-lucide="git-branch"></i><div><strong>增量复用</strong><p>只传入与本问题相关的紧凑上下文，不重复携带全量材料。</p></div></div>
-            </aside>
-          </div>
-        </section>
-      </div>
-    </section>
-    <section class="workflow-section" id="workflow" aria-labelledby="workflow-title">
-      <div class="section-heading section-heading--split">
-        <div><div class="eyebrow"><span class="eyebrow__dot"></span>智能协作引擎</div><h2 id="workflow-title">多个 Agent 分工，但由统一计划与事实状态驱动</h2></div>
-        <p>能力单元不直接互调，而是由 Planner 生成执行计划并按需推进。这样既能支持复杂任务，也能控制范围、追踪来源与增量重算。</p>
-      </div>
-      <div class="workflow-grid">
-        <div class="workflow-visual"><img src="./assets/agent-workflow.png" alt="CareerAssistant 运行时架构与 Agent 工作流示意图" /><div class="image-caption"><i data-lucide="workflow"></i><span>前端、FastAPI、LangGraph、LLM Agent、语音子图与数据层的运行时协作关系</span></div></div>
-        <div class="workflow-points">
-          <article><div class="workflow-point__index">01</div><div><h3>意图分类与执行计划</h3><p>先理解“贴 JD、补材料、改内容、出题、写求职信”等意图，再生成计划并推进节点。</p></div></article>
-          <article><div class="workflow-point__index">02</div><div><h3>模型分层与结构化输出</h3><p>生成类任务使用更强模型，提取、评审、分类使用轻量模型；结果经过 Schema 校验后再落库。</p></div></article>
-          <article><div class="workflow-point__index">03</div><div><h3>增量重算与版本约束</h3><p>输入变化时只重跑受影响环节，保留模板与渲染配置；下游产物记录基于版本。</p></div></article>
-          <article><div class="workflow-point__index">04</div><div><h3>语音面试独立子图</h3><p>面试提问、追问、语音转写与评估分层协作，报告可转为画像提案但不直接覆盖事实。</p></div></article>
+          <section class="module-panel" id="module-applications" data-panel="applications" role="tabpanel">
+            <div class="module-heading">
+              <div><span class="small-kicker">投递记录</span><h3>从投出简历到拿到结果，持续跟进</h3></div>
+              <div class="heading-actions"><button class="button small secondary demo-action"><i data-lucide="download"></i>导出记录</button><button class="button small primary demo-action"><i data-lucide="plus"></i>新增投递</button></div>
+            </div>
+            <div class="application-stats">
+              <div><i data-lucide="send"></i><span>全部投递</span><b>12</b><small>本月新增 5 条</small></div>
+              <div><i data-lucide="loader-circle"></i><span>进行中</span><b>6</b><small>2 条等待笔试</small></div>
+              <div><i data-lucide="badge-check"></i><span>已通过</span><b>2</b><small>通过率 16.7%</small></div>
+              <div><i data-lucide="calendar-days"></i><span>最近投递</span><b>今天</b><small>14:32 · 星河云科技</small></div>
+            </div>
+            <div class="application-toolbar"><div class="search-mock"><i data-lucide="search"></i><span>按公司或岗位模糊搜索</span></div><div class="filter-chips"><button class="active">全部</button><button>已投递</button><button>笔试中</button><button>面试中</button><button>通过</button><button>未通过</button></div></div>
+            <div class="table-wrap">
+              <table class="application-table">
+                <thead><tr><th>公司</th><th>岗位</th><th>状态</th><th>结果</th><th>投递时间</th><th>备注</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td><b>星河云科技</b></td><td>后端开发工程师</td><td><span class="badge info">面试中</span></td><td><span class="status-dot ongoing">进行中</span></td><td>2026-10-04 14:32</td><td>已完成技术一面</td><td><button class="icon-button" title="更多"><i data-lucide="ellipsis"></i></button></td></tr>
+                  <tr><td><b>蓝屿数据</b></td><td>云原生平台开发</td><td><span class="badge warning">笔试中</span></td><td><span class="status-dot ongoing">进行中</span></td><td>2026-10-02 09:18</td><td>10 月 8 日前完成笔试</td><td><button class="icon-button" title="更多"><i data-lucide="ellipsis"></i></button></td></tr>
+                  <tr><td><b>木棉科技</b></td><td>基础架构实习生</td><td><span class="badge success">通过</span></td><td><span class="status-dot passed">通过</span></td><td>2026-09-28 16:45</td><td>已收到实习 offer</td><td><button class="icon-button" title="更多"><i data-lucide="ellipsis"></i></button></td></tr>
+                  <tr><td><b>栖云智能</b></td><td>Java 开发工程师</td><td><span class="badge neutral">已投递</span></td><td><span class="status-dot ongoing">进行中</span></td><td>2026-09-25 11:20</td><td>官网投递</td><td><button class="icon-button" title="更多"><i data-lucide="ellipsis"></i></button></td></tr>
+                  <tr><td><b>白榆软件</b></td><td>后端研发工程师</td><td><span class="badge danger">未通过</span></td><td><span class="status-dot failed">未通过</span></td><td>2026-09-18 10:06</td><td>已复盘系统设计题</td><td><button class="icon-button" title="更多"><i data-lucide="ellipsis"></i></button></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="feature-strip"><span><i data-lucide="search"></i>公司 / 岗位搜索</span><span><i data-lucide="filter"></i>状态筛选</span><span><i data-lucide="square-pen"></i>新增、编辑、删除</span><span><i data-lucide="bar-chart-3"></i>进行中与通过汇总</span></div>
+          </section>
         </div>
       </div>
     </section>
 
-    <section class="principles-section" aria-labelledby="principles-title">
-      <div class="section-heading section-heading--center"><div class="eyebrow"><span class="eyebrow__dot"></span>产品边界</div><h2 id="principles-title">让 AI 更有用，也更可控</h2><p>公开演示聚焦可验证的产品闭环，而不是包装成无所不能的聊天机器人。</p></div>
-      <div class="principle-grid">
-        <article><div class="principle-icon principle-icon--green"><i data-lucide="database"></i></div><h3>证据优先</h3><p>画像条目标注来源与确认状态，生成结果可以回溯到材料片段。</p></article>
-        <article><div class="principle-icon principle-icon--coral"><i data-lucide="hand"></i></div><h3>用户确认</h3><p>AI 只提出新增、修改和优化建议，最终写入权始终属于用户。</p></article>
-        <article><div class="principle-icon principle-icon--yellow"><i data-lucide="layers-3"></i></div><h3>版本可控</h3><p>简历改动生成新版本，支持对比、采纳和回滚，避免一次性覆盖。</p></article>
-        <article><div class="principle-icon principle-icon--blue"><i data-lucide="timer-reset"></i></div><h3>增量计算</h3><p>只重算受影响的任务环节，降低延迟、调用成本和结果波动。</p></article>
+    <section class="section workflow-section" id="workflow">
+      <div class="section-head split-head">
+        <div><div class="eyebrow">产品闭环</div><h2>AI 提议，用户拍板，<br>每次求职都留下资产</h2></div>
+        <p>系统不把 AI 输出直接当作事实。生成结果先进入可审阅的结构化产物，用户确认后才影响下一阶段。</p>
+      </div>
+      <div class="workflow-map">
+        <div class="workflow-node source"><i data-lucide="file-input"></i><span>输入</span><b>JD · 简历 · 材料</b></div>
+        <i data-lucide="arrow-right"></i>
+        <div class="workflow-node profile-node"><i data-lucide="database"></i><span>结构化</span><b>个人画像</b><small>事实 · 证据 · 提案</small></div>
+        <i data-lucide="arrow-right"></i>
+        <div class="workflow-node outputs"><i data-lucide="panels-top-left"></i><span>多路复用</span><b>简历 · 分析 · 面试</b><small>版本可追溯</small></div>
+        <i data-lucide="arrow-right"></i>
+        <div class="workflow-node feedback"><i data-lucide="message-square-check"></i><span>反馈</span><b>面试与投递</b><small>仅确认后回写</small></div>
+      </div>
+      <div class="version-band">
+        <div><span class="version-number">v1</span><b>原始简历</b><small>用户上传</small></div>
+        <i data-lucide="arrow-right"></i>
+        <div><span class="version-number">v2</span><b>岗位定制稿</b><small>用户逐模块确认</small></div>
+        <i data-lucide="arrow-right"></i>
+        <div class="active"><span class="version-number">v3</span><b>面试优化版</b><small>支持回滚</small></div>
       </div>
     </section>
 
-    <section class="privacy-section" id="privacy" aria-labelledby="privacy-title">
-      <div class="privacy-card">
-        <div class="privacy-card__icon"><i data-lucide="shield-check"></i></div>
-        <div class="privacy-card__copy">
-          <div class="eyebrow"><span class="eyebrow__dot"></span>公开演示说明</div>
-          <h2 id="privacy-title">这是一个纯前端 Mock 演示，不连接真实后端</h2>
-          <p>页面中的姓名、学校、公司、项目、联系方式、聊天记录、匹配分数与面试反馈均为虚构数据，不对应任何真实个人或企业。演示不会上传文件，也不会调用真实 LLM、语音识别或语音合成服务。</p>
-          <div class="privacy-facts"><span><i data-lucide="check"></i>无真实个人信息</span><span><i data-lucide="check"></i>无后端 API 请求</span><span><i data-lucide="check"></i>无真实 AI 调用</span><span><i data-lucide="check"></i>所有交互均在浏览器本地完成</span></div>
+    <section class="section architecture-section" id="architecture">
+      <div class="section-head centered">
+        <div class="eyebrow">技术架构</div>
+        <h2>真实系统不只是一个前端页面</h2>
+        <p>完整项目由 Vue 3、FastAPI、LangGraph、MySQL、Redis、WebSocket 语音网关与 OpenAI 兼容模型服务共同支撑。</p>
+      </div>
+      <figure class="architecture-figure">
+        <img src="./assets/agent-workflow.png" alt="CareerAssistant 运行时架构：Vue 3 前端经 Nginx 和 FastAPI 调用 LangGraph、Agent、语音网关、RAG、MySQL 与 Redis">
+        <figcaption>CareerAssistant 运行时架构示意。该图展示真实系统的分析链路、语音面试链路与安全边界。</figcaption>
+      </figure>
+      <div class="architecture-notes">
+        <article><i data-lucide="workflow"></i><h3>主分析链路</h3><p>JD 与简历通过 SSE 流式推进，LangGraph Planner 分类意图并生成执行计划，各能力单元按契约写入自己的状态字段。</p></article>
+        <article><i data-lucide="audio-lines"></i><h3>语音面试链路</h3><p>WebSocket 语音网关串联 ASR、面试子图与 TTS，支持打断、checkpoint 恢复、稳定问题标识和证据化评价。</p></article>
+        <article><i data-lucide="shield-check"></i><h3>安全与数据边界</h3><p>JWT 认证、模型调用重试分类、结构化校验，以及 MySQL / Redis / RAG 的持久化能力都在完整项目中提供。</p></article>
+      </div>
+    </section>
+
+    <section class="boundary-section">
+      <div class="boundary-inner">
+        <div class="boundary-copy"><div class="eyebrow light">公开预览边界</div><h2>想体验真实 AI 能力，<br>请使用完整项目</h2><p>本页面是独立的静态功能演示，设计用途是帮助访客快速了解产品能力，不替代真实系统。</p><a class="button button-light" href="https://github.com/Lzy22301093/CareerAssistant" target="_blank" rel="noreferrer"><i data-lucide="github"></i>打开 CareerAssistant 项目</a></div>
+        <div class="boundary-list">
+          <div><i data-lucide="circle-check"></i><span><b>这里可以体验</b>真实模块结构、字段、流程、预设画像、简历内容与结果样式</span></div>
+          <div><i data-lucide="circle-x"></i><span><b>这里无法运行</b>真实 LLM 生成、流式 Agent、语音 ASR / TTS、WebSocket 追问、数据库持久化</span></div>
+          <div><i data-lucide="lock-keyhole"></i><span><b>隐私与安全</b>访客操作仅在浏览器页面演示，不上传输入；所有展示数据均为虚构</span></div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="brand"><span class="brand__mark"><i data-lucide="scan-search"></i></span><div><strong>CareerAssistant</strong><span>AI 求职资产工作台 · 公开演示</span></div></div>
-      <p>虚构数据 · 静态演示 · 不收集个人信息</p>
-      <a class="back-top" href="#top"><i data-lucide="arrow-up"></i>回到顶部</a>
-    </div>
+  <footer class="site-footer">
+    <div><a class="brand" href="#top"><span class="brand-mark"><i data-lucide="file-user"></i></span><span>CareerAssistant</span></a><p>AI 求职助手 · 个人画像驱动的资产工作台</p></div>
+    <div class="footer-links"><a href="#product-preview">功能预览</a><a href="#architecture">技术架构</a><a href="https://github.com/Lzy22301093/CareerAssistant" target="_blank" rel="noreferrer">完整项目</a></div>
+    <div class="footer-note"><span>公开演示数据均为虚构</span><span>本页不采集或上传访客输入</span></div>
   </footer>
 
-  <div class="modal" id="demo-info-modal" hidden>
-    <div class="modal__backdrop" data-close-modal></div>
-    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <button class="icon-button modal__close" type="button" aria-label="关闭" data-close-modal><i data-lucide="x"></i></button>
-      <div class="modal__icon"><i data-lucide="shield-check"></i></div>
-      <h2 id="modal-title">演示数据说明</h2>
-      <p>本页面用于展示 CareerAssistant 的产品功能与交互方式。所有人物、经历、企业、学校、联系方式和分析结果均由演示需要虚构。</p>
-      <ul><li><i data-lucide="check-circle-2"></i>不包含项目作者或任何真实用户的个人信息</li><li><i data-lucide="check-circle-2"></i>AI 生成、语音面试、匹配分析均为预设示例</li><li><i data-lucide="check-circle-2"></i>页面为静态站，不会上传或保存输入内容</li></ul>
-      <button class="button button--primary" type="button" data-close-modal>我知道了</button>
-    </div>
-  </div>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="toast" role="status" aria-live="polite"><i data-lucide="check-circle-2"></i><span>这是静态演示，完整操作请使用 CareerAssistant 项目</span></div>
+
+  <script src="./assets/lucide.min.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
-
-
-
-
-
