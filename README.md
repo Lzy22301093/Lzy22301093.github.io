@@ -1,61 +1,51 @@
-# EasyResume 公开在线预览
+# EasyResume 公开在线预览（GitHub Pages）
 
-![EasyResume 公开演示首页](./preview.png)
+![EasyResume 公开演示](./preview.png)
 
-这是 EasyResume 的独立静态功能演示站，用于展示真实项目的模块结构、核心流程、预设数据产物与运行架构。
+这是 **EasyResume** 的公开在线预览：使用真实前端工程构建，界面与交互与源码项目一致；数据为虚构演示人物「林知远」，AI/语音流程为本地 Mock。
 
 公开地址：[https://lzy22301093.github.io/](https://lzy22301093.github.io/)
 
-## 演示内容
+## 你能在这里看到什么
 
-页面按 EasyResume 的真实产品主线组织：
-
-1. 个人画像：分类、事实/待确认状态、证据来源、技能、投递方向、软性信息与画像摘要
-2. 简历生成：准确的 8 步向导、画像导入、AI 表达包装、模板、篇幅与导出入口
-3. 简历工作台：多版本文档、区域框选、区域改写候选、逐条采纳、对比与回滚
-4. 求职分析：左侧对话与右侧 JD 分析、个人画像、Gap 分析、岗位定制、面试准备、调试
-5. 模拟面试：准备、面试、报告、InterviewPlan、稳定问题标识与画像更新提案
-6. 投递记录：状态筛选、搜索、汇总、公司/岗位/状态/结果/备注管理
-
-页面还展示产品原则、版本闭环和真实运行时架构。
+- **免登录演示账号**：直接进入工作台，无需注册
+- **一比一产品界面**：个人画像、简历生成、简历工作台、求职分析、模拟面试、投递记录、功能介绍
+- **Mock 用户旅程**：预置画像、多版本简历、匹配任务、面试报告、投递记录
+- **AI 预设流程**：点击生成 / 匹配 / 面试会走模拟耗时与预设结果，并提示完整能力需克隆源码
+- **克隆运行页**（导航「克隆运行」）：完整功能启动步骤与演示边界说明
 
 ## 演示边界
 
-- 页面只运行在浏览器本地，不连接 EasyResume 后端、LLM、ASR、TTS、WebSocket 或数据库。
-- 模拟面试仅展示真实产品流程和预设结果，无法进行实时语音面试、实时追问和模型评价。
-- AI 生成、岗位匹配、面试评价等均为静态 Mock 示例；完整能力需运行 EasyResume 项目。
-- 人物“林知远”及所有学校、公司、项目、成绩、联系方式、公司岗位和分数均为虚构演示数据。
-- 不包含项目作者或任何真实用户的个人信息。
-- 页面不会上传、保存或发送访客输入。
+- 不连接 EasyResume 后端、LLM、ASR、TTS、WebSocket 或数据库
+- 人物与学校、公司、项目、联系方式、岗位、分数均为虚构
+- 不上传、保存或发送访客输入
+- 完整能力（真实 LLM、语音面试、导出等）请克隆源码仓库运行
 
-## 为什么单独存放
-
-本目录是独立站点仓库，不包含 EasyResume 源码、数据库、API Key、真实简历或后端服务。它与真实项目仓库分离，避免静态演示文件影响产品代码与部署。
-
-## 目录
+## 完整项目
 
 ```text
-.
-├── index.html
-├── styles.css
-├── app.js
-├── preview.png
-├── .nojekyll
-└── assets/
-    ├── agent-workflow.png
-    └── lucide.min.js
+git clone https://github.com/Lzy22301093/EasyResume.git
+cd EasyResume
+cp .env.example .env
+docker compose up -d
 ```
 
-## 本地预览
+- 前端：http://localhost:5173
+- 后端 API：http://localhost:8000/docs
 
-在本目录运行：
+## 本仓库如何构建
+
+预览站由真实项目 `frontend/` 在 `VITE_DEMO_MODE=1` 下构建：
 
 ```powershell
-python -m http.server 4173
+cd frontend
+$env:VITE_DEMO_MODE='1'
+npm run build
+# 将 dist/ 同步到本仓库根目录并保留 .nojekyll
 ```
 
-然后打开 `http://localhost:4173`。
+演示模式实现在源码 `frontend/src/demo/`（Mock API / SSE / WebSocket）。
 
-## 隐私提醒
+## 隐私
 
-页面中的演示联系方式固定为 `resume-demo@example.com` 与 `+86 000 0000 0000`。发布前应继续确认页面、Git 历史和图片资源中没有真实邮箱、手机号、简历或其他敏感信息。
+演示联系方式固定为 `resume-demo@example.com` 与 `+86 000 0000 0000`。请勿提交真实个人信息。
